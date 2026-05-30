@@ -1,5 +1,21 @@
 # @martian-engineering/lossless-claw
 
+## 0.11.4
+
+### Patch Changes
+
+- [#715](https://github.com/Martian-Engineering/lossless-claw/pull/715) [`57afa5c`](https://github.com/Martian-Engineering/lossless-claw/commit/57afa5caf96aab5789d386fb4d7249f8ae879004) Thanks [@jalehman](https://github.com/jalehman)! - Keep deferred threshold compaction off the normal next-turn assemble path.
+
+  Pending deferred compaction debt is now left for the after-turn background drain
+  or host-approved maintenance while the live prompt is still within the active
+  token budget. `assemble()` only drains pending debt synchronously as an
+  emergency safeguard when the live prompt estimate is already over budget,
+  without turning ordinary threshold debt into foreground latency.
+
+- [#768](https://github.com/Martian-Engineering/lossless-claw/pull/768) [`535f4e2`](https://github.com/Martian-Engineering/lossless-claw/commit/535f4e2b0fcfaa2be7942e74d22ddcf60ee890bb) Thanks [@100yenadmin](https://github.com/100yenadmin)! - Restrict delegated sub-agent retrieval tools to the conversation IDs in their expansion grant. Sub-agents can no longer use `allConversations=true` or an explicit foreign `conversationId` to bypass the grant scope in `lcm_grep`, `lcm_describe`, `lcm_expand`, or `lcm_expand_query`.
+
+- [#761](https://github.com/Martian-Engineering/lossless-claw/pull/761) [`640a0a8`](https://github.com/Martian-Engineering/lossless-claw/commit/640a0a869c8b2b172257ed8edcf3b19ba325cc8b) Thanks [@jalehman](https://github.com/jalehman)! - Avoid runtime auto-rotate JSONL rewrites from background maintenance while embedded turns may still be in flight.
+
 ## 0.11.3
 
 ### Patch Changes
